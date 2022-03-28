@@ -5,6 +5,7 @@ import BooksList from './BooksList.js'
 
 class BooksApp extends React.Component {
   state = {
+    books: [],
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -15,6 +16,18 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
+    BooksAPI.getAll()
+      .then((books) => {
+        this.setState(prevState => ({
+          books: [ ...prevState.books, ...books]
+        }));
+        // for(let book of this.state.books){
+        //   console.log(book.shelf);
+        //   console.log(book.title);
+        //   console.log("")
+        // }
+      })
+    
     // BooksAPI.getAll().then(data => {
     //   for(let key of Object.keys(data)){
     //     console.log(data[key].shelf)}
@@ -24,7 +37,10 @@ class BooksApp extends React.Component {
     //   const test = data[1];
     //   BooksAPI.update(test, "currentlyReading");
     // });
-    BooksAPI.getAll().then((data) => console.log(data));
+  }
+
+  navigateToSearch = () => {
+    this.setState({ showSearchPage: true });
   }
 
   render() {
@@ -52,7 +68,7 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <BooksList />
+          <BooksList booksOnShelves={this.state.books} handleClick={this.navigateToSearch}/>
         )}
       </div>
     )
