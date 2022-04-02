@@ -15,7 +15,9 @@ const BookShelf = props => {
               title={b.title}
               author={b.authors[0]}
               thumbnail={b.imageLinks.thumbnail}
+              shelf={b.shelf}
               id={b.id}
+              updateShelf={props.updateShelf}
             />
           </li>))}
         </ol>

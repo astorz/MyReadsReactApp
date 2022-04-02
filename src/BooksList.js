@@ -10,25 +10,24 @@ const BooksList = props => {
     </div>
 
     <div className="list-books-content">
-
-      <BookShelf 
+      <BookShelf
         booksOnShelves={props.booksOnShelves}
         shelfName="Currently Reading"
         shelf="currentlyReading"
+        updateShelf={props.updateShelf}
       />
-
       <BookShelf 
         booksOnShelves={props.booksOnShelves}
         shelfName="Want to Read"
         shelf="wantToRead"
+        updateShelf={props.updateShelf}
       />
-
       <BookShelf 
         booksOnShelves={props.booksOnShelves}
         shelfName="Read"
         shelf="read"
+        updateShelf={props.updateShelf}
       />
-
     </div>
 
     <div className="open-search">

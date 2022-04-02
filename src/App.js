@@ -21,11 +21,7 @@ class BooksApp extends React.Component {
         this.setState(prevState => ({
           books: [ ...prevState.books, ...books]
         }));
-        // for(let book of this.state.books){
-        //   console.log(book.shelf);
-        //   console.log(book.title);
-        //   console.log("")
-        // }
+        
       })
     
     // BooksAPI.getAll().then(data => {
@@ -37,13 +33,29 @@ class BooksApp extends React.Component {
     //   const test = data[1];
     //   BooksAPI.update(test, "currentlyReading");
     // });
+
+    
+
   }
 
   navigateToSearch = () => {
     this.setState({ showSearchPage: true });
   }
 
+  updateShelf = (id, shelf) => {
+    this.setState((prevState) => {
+      let bookUpdate = prevState.books.filter(b => b.id === id)[0];
+      bookUpdate.shelf = shelf;
+      return {
+        books: [...prevState.books.filter(b => b.id !== id), bookUpdate]
+      }
+    })
+  }
+
+
+
   render() {
+   
     return (
       <div className="app">
         {this.state.showSearchPage ? (
@@ -68,7 +80,10 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <BooksList booksOnShelves={this.state.books} handleClick={this.navigateToSearch}/>
+          <BooksList 
+            booksOnShelves={this.state.books} 
+            updateShelf={this.updateShelf}
+            handleClick={this.navigateToSearch}/>
         )}
       </div>
     )
