@@ -21,21 +21,12 @@ class BooksApp extends React.Component {
         this.setState(prevState => ({
           books: [ ...prevState.books, ...books]
         }));
-        
       })
-    
-    // BooksAPI.getAll().then(data => {
-    //   for(let key of Object.keys(data)){
-    //     console.log(data[key].shelf)}
-    //   });
     
     // BooksAPI.search("Rowling").then((data) => {
     //   const test = data[1];
     //   BooksAPI.update(test, "currentlyReading");
     // });
-
-    
-
   }
 
   navigateToSearch = () => {

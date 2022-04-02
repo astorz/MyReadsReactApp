@@ -3,7 +3,6 @@ import Book from "./Book";
 
 const BookShelf = props => {
   const currentShelf = props.booksOnShelves.filter(b => b.shelf === props.shelf);
-  // console.log(currentShelf);
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">{props.shelfName}</h2>
