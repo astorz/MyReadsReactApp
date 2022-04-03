@@ -24,8 +24,7 @@ class BooksApp extends React.Component {
       })
     
     // BooksAPI.search("Rowling").then((data) => {
-    //   const test = data[1];
-    //   BooksAPI.update(test, "currentlyReading");
+    //   console.log(data);
     // });
   }
 

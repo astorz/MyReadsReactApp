@@ -12,7 +12,7 @@ const BookShelf = props => {
           <li key={b.id}>
             <Book 
               title={b.title}
-              author={b.authors[0]}
+              authors={b.authors}
               thumbnail={b.imageLinks.thumbnail}
               shelf={b.shelf}
               id={b.id}

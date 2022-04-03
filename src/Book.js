@@ -2,7 +2,7 @@ import React from "react";
 import BookShelfChanger from "./BookShelfChanger";
 
 const Book = props => {
-  const { title, author, thumbnail, shelf, id } = props;
+  const { title, authors, thumbnail, shelf, id } = props;
   return (
     <div className="book">
       <div className="book-top">
@@ -16,7 +16,10 @@ const Book = props => {
         </div>
       </div>
       <div className="book-title">{title}</div>
-      <div className="book-authors">{author}</div>
+      {authors.map(a => <div 
+          className="book-authors"
+          key={a}
+        >{a}</div>)}
     </div>
   )
 }
