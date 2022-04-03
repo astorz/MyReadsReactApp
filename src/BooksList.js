@@ -1,5 +1,6 @@
 import React from "react"
 import BookShelf from "./BookShelf";
+import { Link } from 'react-router-dom'
 
 const BooksList = props => {
   return (
@@ -31,9 +32,13 @@ const BooksList = props => {
     </div>
 
     <div className="open-search">
-      <button onClick={props.handleClick}>Add a book</button>
+      <Link
+        className="open-search-button"
+        to="/search">
+          <button>Add a book</button>
+      </Link>
     </div>
-
+    
   </div>
   )
 }
