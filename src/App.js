@@ -33,7 +33,7 @@ class BooksApp extends React.Component {
       let bookUpdate = prevState.books.filter(b => b.id === id)[0];
       bookUpdate.shelf = shelf;
       return {
-        books: [...prevState.books.filter(b => b.id !== id), bookUpdate]
+        books: [bookUpdate, ...prevState.books.filter(b => b.id !== id)]
       }
     })
   }
@@ -41,6 +41,10 @@ class BooksApp extends React.Component {
   render() {   
     return (
       <div className="app">
+        {/* Key resources regarding regarding upgrade to react-router-dom v6: 
+        https://stackoverflow.com/questions/69832748/error-error-a-route-is-only-ever-to-be-used-as-the-child-of-routes-element
+        https://stackoverflow.com/questions/70074701/using-react-router-to-switch-between-pages-but-my-props-arent-displaying-is-th */}
+        
         <Routes>
           <Route
             path="/"
