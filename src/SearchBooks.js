@@ -2,6 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom' 
 
 const SearchBooks = () => {
+      
+    BooksAPI.search("Rowling").then((data) => {
+      console.log(data);
+    });
+
   return (
     <div className="search-books">
       <div className="search-books-bar">

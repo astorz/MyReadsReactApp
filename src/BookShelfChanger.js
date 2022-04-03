@@ -22,7 +22,6 @@ class BookShelfChanger extends React.Component {
 
     return (
       <select value={this.props.shelf} onChange={this.handleChange}>
-        
         {options.map(o => 
           <option 
               value={o.value}

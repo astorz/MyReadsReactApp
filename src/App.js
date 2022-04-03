@@ -18,10 +18,6 @@ class BooksApp extends React.Component {
           books: [ ...prevState.books, ...books]
         }));
       })
-    
-    // BooksAPI.search("Rowling").then((data) => {
-    //   console.log(data);
-    // });
   }
 
   navigateToSearch = () => {
@@ -51,8 +47,7 @@ class BooksApp extends React.Component {
             element={
               <BooksList 
                 booksOnShelves={this.state.books} 
-                updateShelf={this.updateShelf}
-                handleClick={this.navigateToSearch}/>
+                updateShelf={this.updateShelf}/>
             }
           />
           
