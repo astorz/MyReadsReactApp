@@ -34,7 +34,7 @@ class BooksApp extends React.Component {
     })
   }
 
-  render() {   
+  render() {
     return (
       <div className="app">
         {/* Key resources regarding regarding upgrade to react-router-dom v6: 
@@ -53,7 +53,9 @@ class BooksApp extends React.Component {
           
           <Route
             path="/search"
-            element={<SearchBooks />}/>
+            element={<SearchBooks 
+              updateShelf={this.updateShelf}/>
+            }/>
         </Routes>
       </div>
     )

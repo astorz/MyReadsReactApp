@@ -1,13 +1,65 @@
 import React from 'react'
-import { Link } from 'react-router-dom' 
+import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
+import searchTerms from './SEARCH_TERMS.md';
+import Book from "./Book";
 
-const SearchBooks = () => {
-      
-    BooksAPI.search("Rowling").then((data) => {
-      console.log(data);
-    });
+class SearchBooks extends React.Component {
+  
+  state = {
+    query: "",
+    results: [],
+    validSearchTerms: []
+  }
 
-  return (
+  componentDidMount() {
+    fetch(searchTerms)
+      .then((res) => res.text())
+      .then((text) => {
+        let searchTermsList = text.split(/', '|^'|'\n$/);
+        searchTermsList.pop();
+        searchTermsList.shift();
+        this.setState(prevState => (
+          { validSearchTerms: [ ...prevState.validSearchTerms, ...searchTermsList]}
+        ));
+      })
+  }
+  
+  cleanQuery = query => {
+    const regex = /\s+/;
+    let cleaned = query.trim().toLowerCase().split(regex);
+    return cleaned.join(" ");
+  }
+
+  // https://stackoverflow.com/questions/34687091/can-i-execute-a-function-after-setstate-is-finished-updating
+  changeQuery = event => {
+    this.setState({
+      query: event.target.value
+    }, 
+    () => {
+      if(this.state.validSearchTerms.map(t => t.toLowerCase()).includes(this.cleanQuery(this.state.query))) {
+        BooksAPI.search(this.cleanQuery(this.state.query)).then((data) => {
+          this.setState({
+            results: data
+          }
+          , () => {console.log(this.state.results);}
+          )
+        });
+      }
+    }
+    );
+  }
+
+  clearQuery = () => {
+    this.setState({
+      query: "",
+      results: []
+    })
+  }
+
+  render() {
+
+    return (
     <div className="search-books">
       <div className="search-books-bar">
         <Link
@@ -23,15 +75,34 @@ const SearchBooks = () => {
             However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
             you don't find a specific author or title. Every search is limited by search terms.
           */}
-          <input type="text" placeholder="Search by title or author"/>
+          <input 
+            type="text" 
+            placeholder="Search by title or author"
+            value={this.state.query}
+            onChange={this.changeQuery}/>
+          <button
+            onClick={this.clearQuery}>Clear</button>
 
         </div>
       </div>
       <div className="search-books-results">
-        <ol className="books-grid"></ol>
+        <ol className="books-grid">
+          {this.state.results.map(b => (
+          <li key={b.id}>
+            <Book 
+              title={b.title}
+              authors={b.authors}
+              thumbnail={b.imageLinks.thumbnail}
+              shelf={b.shelf}
+              id={b.id}
+              updateShelf={this.props.updateShelf}
+            />
+          </li>))}
+        </ol>
       </div>
     </div>
-  )
+    )
+  }  
 }
 
 export default SearchBooks;

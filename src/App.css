@@ -82,12 +82,26 @@ body, .app {
   left: 0;
   z-index: 5;
   display: flex;
+  flex-direction: row;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
 }
 
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
+  display: flex;
+  background: steelblue;
+}
+
+.search-books-input-wrapper button {
+  border: none;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-size: larger;
+  color:#989898;
+}
+
+.search-books-input-wrapper button:hover {
+  color: dimgray;
 }
 
 .search-books-bar input {
