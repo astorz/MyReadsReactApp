@@ -22,6 +22,7 @@ class SearchBooks extends React.Component {
         this.setState(prevState => (
           { validSearchTerms: [ ...prevState.validSearchTerms, ...searchTermsList]}
         ));
+        // console.log(this.props.booksOnShelves)
       })
   }
   
@@ -38,13 +39,26 @@ class SearchBooks extends React.Component {
     }, 
     () => {
       if(this.state.validSearchTerms.map(t => t.toLowerCase()).includes(this.cleanQuery(this.state.query))) {
-        BooksAPI.search(this.cleanQuery(this.state.query)).then((data) => {
-          this.setState({
-            results: data
-          }
-          , () => {console.log(this.state.results);}
-          )
-        });
+        BooksAPI.search(this.cleanQuery(this.state.query))
+          .then((data) => {
+            return data.filter(d => d.authors !== undefined && d.imageLinks !== undefined)
+          })
+          .then(data => {
+            const onShelfIds = this.props.booksOnShelves.map(b => b.id);
+            data.map(d => 
+              onShelfIds.includes(d.id) ? 
+              d["shelf"] = this.props.booksOnShelves.filter(b => b.id === d.id)[0].shelf
+                : 
+              d["shelf"] = "none");
+              return data;
+          })
+          .then((books) => (
+            this.setState({
+              results: books
+            }
+            // , () => {console.log(this.state.results);}
+            )
+          ));
       }
     }
     );
@@ -75,7 +89,7 @@ class SearchBooks extends React.Component {
             However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
             you don't find a specific author or title. Every search is limited by search terms.
           */}
-          <input 
+          <input
             type="text" 
             placeholder="Search by title or author"
             value={this.state.query}
@@ -97,7 +111,8 @@ class SearchBooks extends React.Component {
               id={b.id}
               updateShelf={this.props.updateShelf}
             />
-          </li>))}
+          </li>
+          ))}
         </ol>
       </div>
     </div>
