@@ -1,5 +1,6 @@
 import React from 'react';
 import * as BooksAPI from './BooksAPI';
+import PropTypes from 'prop-types';
 
 const BookShelfChanger = props => {
   
@@ -26,6 +27,12 @@ const BookShelfChanger = props => {
           >{o.text}</option>)};
     </select>
   )
+}
+
+BookShelfChanger.propTypes = {
+  updateShelf: PropTypes.func.isRequired,
+  shelf: PropTypes.string,
+  book: PropTypes.object.isRequired
 }
 
 export default BookShelfChanger;

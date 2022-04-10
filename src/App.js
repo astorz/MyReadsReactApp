@@ -4,7 +4,6 @@ import './App.css'
 import BooksList from './BooksList.js'
 import { Routes, Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
-import { element } from 'prop-types'
 
 class BooksApp extends React.Component {
   state = {

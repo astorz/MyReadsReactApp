@@ -4,6 +4,7 @@ import * as BooksAPI from './BooksAPI';
 import searchTerms from './SEARCH_TERMS.md';
 import Book from "./Book";
 import { Hint } from 'react-autocomplete-hint';
+import PropTypes from 'prop-types';
 
 class SearchBooks extends React.Component {
   
@@ -130,6 +131,11 @@ class SearchBooks extends React.Component {
     </div>
     )
   }  
+}
+
+ListContacts.propTypes = {
+  updateShelf: PropTypes.func.isRequired,
+  booksOnShelves: PropTypes.array.isRequired
 }
 
 export default SearchBooks;
