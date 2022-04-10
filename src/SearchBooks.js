@@ -133,7 +133,7 @@ class SearchBooks extends React.Component {
   }  
 }
 
-ListContacts.propTypes = {
+SearchBooks.propTypes = {
   updateShelf: PropTypes.func.isRequired,
   booksOnShelves: PropTypes.array.isRequired
 }
