@@ -1,8 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import * as BooksAPI from './BooksAPI'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import * as BooksAPI from './BooksAPI';
 import searchTerms from './SEARCH_TERMS.md';
 import Book from "./Book";
+import { Hint } from 'react-autocomplete-hint';
 
 class SearchBooks extends React.Component {
   
@@ -77,7 +78,10 @@ class SearchBooks extends React.Component {
   }
 
   render() {
-
+    
+    // const options = ["art", "banana", "apple"];
+    // const [text, setText] = useState('');
+    
     return (
     <div className="search-books">
       <div className="search-books-bar">
@@ -94,14 +98,17 @@ class SearchBooks extends React.Component {
             However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
             you don't find a specific author or title. Every search is limited by search terms.
           */}
-          <input
-            type="text" 
-            placeholder="Search by title or author"
-            value={this.state.query}
-            onChange={this.changeQuery}/>
+            <Hint
+              options={this.state.validSearchTerms} allowTabFill>
+              <input
+                type="text" 
+                placeholder="Search by title or author"
+                value={this.state.query}
+                onChange={this.changeQuery}
+              />
+            </Hint>
           <button
             onClick={this.clearQuery}>Clear</button>
-
         </div>
       </div>
       <div className="search-books-results">

@@ -7486,6 +7486,11 @@
     "regenerator-runtime" "^0.13.9"
     "whatwg-fetch" "^3.6.2"
 
+"react-autocomplete-hint@^2.0.0":
+  "integrity" "sha512-cwj+h503xosFvd7y/tVHAo2bMj033v9WzVKbsPKc/SfoNsLD75/5nhBoIxbZOCP2KiPhgHHalb77Z/4pu6uwTQ=="
+  "resolved" "https://registry.npmjs.org/react-autocomplete-hint/-/react-autocomplete-hint-2.0.0.tgz"
+  "version" "2.0.0"
+
 "react-dev-utils@^12.0.0":
   "integrity" "sha512-xBQkitdxozPxt1YZ9O1097EJiVpwHr9FoAuEVURCKV0Av8NBERovJauzP7bo1ThvuhZ4shsQ1AJiu4vQpoT1AQ=="
   "resolved" "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.0.tgz"
@@ -7665,7 +7670,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@^16.14.0", "react@^16.6.3", "react@^16.8.0 || ^17.0.0", "react@>= 16", "react@>=16", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0":
+"react@^16.14.0", "react@^16.6.3", "react@^16.8.0 || ^17.0.0", "react@>= 16", "react@>=16", "react@>=16.0.0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"
