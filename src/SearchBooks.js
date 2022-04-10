@@ -34,6 +34,11 @@ class SearchBooks extends React.Component {
 
   // https://stackoverflow.com/questions/34687091/can-i-execute-a-function-after-setstate-is-finished-updating
   changeQuery = event => {
+    if(event.target.value === ""){
+      this.setState({
+        results: []
+      })
+    };
     this.setState({
       query: event.target.value
     }, 
@@ -56,7 +61,7 @@ class SearchBooks extends React.Component {
             this.setState({
               results: books
             }
-            // , () => {console.log(this.state.results);}
+            // , () => {console.log(this.state.query);}
             )
           ));
       }
