@@ -9,16 +9,17 @@ const BookShelf = props => {
       <div className="bookshelf-books">
         <ol className="books-grid">
           {currentShelf.map(b => (
-          <li key={b.id}>
-            <Book 
-              title={b.title}
-              authors={b.authors}
-              thumbnail={b.imageLinks.thumbnail}
-              shelf={b.shelf}
-              id={b.id}
-              updateShelf={props.updateShelf}
-            />
-          </li>))}
+            <li key={b.id}>
+              <Book 
+                title={b.title}
+                authors={b.authors}
+                thumbnail={b.imageLinks.thumbnail}
+                shelf={b.shelf}
+                book = {b}
+                updateShelf={props.updateShelf}
+              />
+            </li>
+          ))}
         </ol>
       </div>
     </div>

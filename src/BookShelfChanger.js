@@ -5,10 +5,9 @@ class BookShelfChanger extends React.Component {
   
   handleChange = event => {
     const targetShelf = event.target.value;
-    const bookId = this.props.id;
-    this.props.updateShelf(bookId, targetShelf);
-    BooksAPI.get(bookId)
-      .then(book => BooksAPI.update(book, targetShelf));
+    const book = this.props.book;
+    this.props.updateShelf(book, targetShelf);
+    BooksAPI.update(book, targetShelf);
   }
     
   render() {

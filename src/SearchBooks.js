@@ -108,7 +108,7 @@ class SearchBooks extends React.Component {
               authors={b.authors}
               thumbnail={b.imageLinks.thumbnail}
               shelf={b.shelf}
-              id={b.id}
+              book={b}
               updateShelf={this.props.updateShelf}
             />
           </li>
