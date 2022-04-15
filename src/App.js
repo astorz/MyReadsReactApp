@@ -1,8 +1,8 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BooksList from './BooksList.js'
-import { Routes, Route } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
 
 class BooksApp extends React.Component {
@@ -20,13 +20,15 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(() => {
       this.setState((prevState) => {
         let bookToUpdate = book;
         bookToUpdate["shelf"] = shelf;
         return {
           books: [...prevState.books.filter(b => b.id !== book.id), bookToUpdate]
         }
-      }) 
+      })
+    })
   }
 
   render() {
@@ -37,6 +39,7 @@ class BooksApp extends React.Component {
         https://stackoverflow.com/questions/70074701/using-react-router-to-switch-between-pages-but-my-props-arent-displaying-is-th */}
         
         <Routes>
+
           <Route
             path="/"
             element={

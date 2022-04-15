@@ -24,7 +24,6 @@ class SearchBooks extends React.Component {
         this.setState(prevState => (
           { validSearchTerms: [ ...prevState.validSearchTerms, ...searchTermsList]}
         ));
-        // console.log(this.props.booksOnShelves)
       })
   }
   
@@ -62,9 +61,7 @@ class SearchBooks extends React.Component {
           .then((books) => (
             this.setState({
               results: books
-            }
-            // , () => {console.log(this.state.query);}
-            )
+            })
           ));
       }
     }
@@ -80,9 +77,6 @@ class SearchBooks extends React.Component {
 
   render() {
     
-    // const options = ["art", "banana", "apple"];
-    // const [text, setText] = useState('');
-    
     return (
     <div className="search-books">
       <div className="search-books-bar">
@@ -91,16 +85,7 @@ class SearchBooks extends React.Component {
           to="/">Close
         </Link> 
         <div className="search-books-input-wrapper">
-          {/*
-            NOTES: The search from BooksAPI is limited to a particular set of search terms.
-            You can find these search terms here:
-            https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-            However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-            you don't find a specific author or title. Every search is limited by search terms.
-          */}
-            <Hint
-              options={this.state.validSearchTerms} allowTabFill>
+            <Hint options={this.state.validSearchTerms} allowTabFill>
               <input
                 type="text" 
                 placeholder="Search by title or author"

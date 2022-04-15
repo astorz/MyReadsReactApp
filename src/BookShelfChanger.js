@@ -1,5 +1,4 @@
 import React from 'react';
-import * as BooksAPI from './BooksAPI';
 import PropTypes from 'prop-types';
 
 const BookShelfChanger = props => {
@@ -8,13 +7,12 @@ const BookShelfChanger = props => {
     const targetShelf = event.target.value;
     const book = props.book;
     props.updateShelf(book, targetShelf);
-    BooksAPI.update(book, targetShelf);
   }
 
   const options = [
-    { value: "currentlyReading", text: "Currently Reading"},
-    { value: "wantToRead", text: "Want to Read"},
-    { value: "read", text: "Read"},
+    { value: "currentlyReading", text: "Currently Reading" },
+    { value: "wantToRead", text: "Want to Read" },
+    { value: "read", text: "Read" },
     { value: "none", text: "None" }
   ];
 

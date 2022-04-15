@@ -34,9 +34,8 @@ const BooksList = props => {
 
     <div className="open-search">
       <Link
-        className="open-search-button"
-        to="/search">
-          <button>Add a book</button>
+        className="open-search-link"
+        to="/search"> Add a book
       </Link>
     </div>
     
