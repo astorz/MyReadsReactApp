@@ -106,10 +106,16 @@ body, .app {
   padding-right: 25px;
   font-size: larger;
   color:#989898;
+  /* justify-content: space-between; */
 }
 
 .search-books-input-wrapper button:hover {
   color: dimgray;
+}
+
+/* <Hint /> when rendered as a div will get a className called "rah-input-wrapper", using this for styling */
+.rah-input-wrapper {
+  width: 100%;
 }
 
 .close-search {
