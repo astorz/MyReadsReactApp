@@ -29,7 +29,7 @@ Book.propTypes = {
   updateShelf: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   authors: PropTypes.array.isRequired,
-  thumbnail: PropTypes.object.isRequired,
+  thumbnail: PropTypes.string.isRequired,
   shelf: PropTypes.string,
   book: PropTypes.object.isRequired
 }
